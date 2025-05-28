@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres para que el navegador interprete correctamente los caracteres especiales -->
+    <title>Inicio</title> <!-- Título que aparece en la pestaña del navegador -->
+    <!-- Enlace al archivo CSS que contiene los estilos de la página -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Título principal de la página con id para aplicar estilos específicos -->
+    <h1 id="sesion">Bienvenido, prueba registrarte e inicia sesión</h1>
+    
+    <!-- Enlaces para navegar a las páginas de registro y login -->
+    <!-- Ambos con el mismo id "inicio" (idealmente deberían tener ids únicos o usar clases) -->
+    <a id="inicio" href="/register">Regístrate</a> | <a id="inicio" href="/login">Inicia Sesión</a>
+
+    <!-- Video de fondo que se reproduce automáticamente, sin sonido, en loop -->
+    <video autoplay muted loop id="videoFondo">
+        <source src="/static/mivideo.mp4" type="video/mp4"> <!-- Fuente del video -->
+    </video>
+
+    <!-- Contenedor para contenido que se superpone al video de fondo -->
+    <div class="contenido"></div>
+
+    <!-- Script para mostrar alertas basadas en el parámetro 'msg' pasado desde Flask -->
+    <script>
+        // Obtenemos el mensaje enviado desde el backend (Flask)
+        const msg = "{{ msg|default('') }}";
+
+        // Verificamos si existe un mensaje para mostrar
+        if (msg) {
+            if (msg === 'logout_exitoso') {
+                alert('Has cerrado sesión correctamente.');
+            } else if (msg === 'login_exitoso') {
+                alert('¡Has iniciado sesión con éxito!');
+            } else if (msg === 'error_login') {
+                alert('Error: Usuario o contraseña incorrectos.');
+            } else if (msg === 'registro_exitoso') {
+                alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+            } else if (msg === 'error_registro') {
+                alert('Error: El usuario ya existe.');
+            }
+        }
+    </script>
+
+</body>
+</html>

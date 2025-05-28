@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres para soportar acentos y caracteres especiales -->
+    <title>Bienvenido</title> <!-- Título que aparece en la pestaña del navegador -->
+    <!-- Enlace al archivo CSS para aplicar estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- Video de fondo que se reproduce automáticamente, sin sonido y en bucle -->
+    <video autoplay muted loop id="videoFondo">
+        <source src="/static/mivideo.mp4" type="video/mp4"> <!-- Fuente del video -->
+    </video>
+    
+    <!-- Título secundario que indica que la autenticación fue exitosa -->
+    <h2>¡Autenticación satisfactoria!</h2>
+
+    <!-- Mensaje de bienvenida dinámico que muestra el nombre completo del usuario -->
+    <p>Bienvenido, {{ nombre_completo }}.</p>
+
+    <!-- Enlace para cerrar sesión que redirige a la ruta /logout -->
+    <a id="inicio" href="/logout">Cerrar sesión</a>
+
+    <!-- Script que muestra una alerta si se recibe el mensaje 'login_exitoso' -->
+    <script>
+      const msg = "{{ msg|default('') }}"; // Captura el mensaje enviado desde el backend (Flask)
+      if (msg === 'login_exitoso') {
+        alert('¡Has iniciado sesión con éxito!'); // Alerta que confirma el inicio de sesión exitoso
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Codificación de caracteres para mostrar correctamente acentos y caracteres especiales -->
+    <title>Iniciar Sesión</title> <!-- Título de la pestaña del navegador -->
+    <!-- Enlace al archivo CSS para estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Video de fondo que se reproduce automáticamente, sin sonido, en loop -->
+    <video autoplay muted loop id="videoFondo">
+        <source src="/static/mivideo.mp4" type="video/mp4"> <!-- Fuente del video -->
+    </video>
+  
+    <!-- Título secundario de la página -->
+    <h2>Login</h2>
+
+    <div class="container mt-4"> <!-- Contenedor para dar estructura y margen (mt-4 es margen superior, presumiblemente definido en CSS) -->
+
+        <!-- Formulario para enviar datos de inicio de sesión al servidor -->
+        <form method="POST" action="/login">
+            <!-- Etiqueta y campo para correo electrónico -->
+            <label for="email">Correo electrónico:</label> 
+            <input type="email" id="email" name="email" required> <!-- Campo obligatorio para email -->
+
+            <!-- Etiqueta y campo para contraseña -->
+            <label for="password">Contraseña:</label> 
+            <input type="password" id="contraseña" name="contraseña" required> <!-- Campo obligatorio para contraseña -->
+
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <!-- Enlace para volver a la página de inicio -->
+        <a id="inicio" href="/">Volver al inicio</a>
+    </div>
+
+    <!-- Script para mostrar alertas basadas en mensajes recibidos del backend (Flask) -->
+    <script>
+        const msg = "{{ msg|default('') }}"; // Obtener mensaje (msg) desde Flask o vacío si no hay
+
+        // Si hay mensaje, mostrar alerta correspondiente
+        if (msg) {
+            if (msg === 'login_exitoso') {
+                alert('¡Has iniciado sesión con éxito!');
+            } else if (msg === 'error_login') {
+                alert('Error: Usuario o contraseña incorrectos.');
+            }
+        }
+    </script>
+
+</body>
+</html>

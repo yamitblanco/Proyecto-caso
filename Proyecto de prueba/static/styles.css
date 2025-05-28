@@ -1,0 +1,86 @@
+/* Estilos generales para todo el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;  /* Fuente de texto para toda la página */
+    line-height: 1.6;                /* Espacio entre líneas para mejor lectura */
+    margin: 0;                      /* Elimina margen por defecto del navegador */
+    padding: 0;                     /* Elimina padding por defecto */
+    color: #f5f3f3;                /* Color de texto principal */
+    
+    /* Flexbox para centrar vertical y horizontalmente todo el contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;                  /* Altura completa de la ventana */
+}
+
+/* Estilos para títulos principales (h1) */
+h1 {
+    color: #ffffffec;               /* Color blanco con un poco de transparencia */
+    font-size: 2.2rem;             /* Tamaño de letra grande */
+    font-style: italic;            /* Texto en cursiva */
+    font-family: Arial, sans-serif;
+    text-align: center;            /* Centra el texto */
+}
+
+/* Estilos para títulos secundarios (h2) */
+h2 {
+    color: #fdfdfd;                /* Blanco casi puro */
+    font-style: italic;            /* Texto en cursiva */
+    font-size: 1.9rem;             /* Tamaño un poco menor que h1 */
+    font-family: Arial, sans-serif;
+    letter-spacing: 3px;           /* Espaciado entre letras para estilo */
+}
+
+/* Estilos para los enlaces con id="inicio" */
+#inicio {
+    font-size: 1.4rem;             /* Tamaño de texto algo grande */
+    font-family: Arial, sans-serif;
+    color: wheat;                  /* Color trigo para diferenciar */
+    font-style: italic;            /* Texto en cursiva */
+    letter-spacing: 1.5px;         /* Espacio entre letras */
+    padding: 24px;                 /* Espacio interno para un área clickeable cómoda */
+}
+
+/* Estilos para formularios */
+form {
+    display: flex;                 /* Usa Flexbox */
+    flex-direction: column;        /* Organiza elementos en columna */
+    align-items: center;           /* Centra los inputs y botones */
+}
+
+/* Estilos para inputs y botones dentro de formularios */
+form input, form button {
+    display: block;                /* Cada elemento en línea nueva */
+    width: 100%;                  /* Ocupa todo el ancho del formulario */
+    padding: 10px;                /* Espaciado interno */
+    margin: 5px 0;                /* Separación vertical entre elementos */
+    border-radius: 5px;           /* Bordes redondeados */
+}
+
+/* Estilos específicos para botones de envío y otros botones */
+form input[type="submit"],
+form button {
+    background-color: #333;       /* Fondo oscuro */
+    color: white;                 /* Texto blanco */
+    border: none;                 /* Sin borde */
+    cursor: pointer;              /* Cambia cursor a mano para indicar clic */
+}
+
+/* Estilos para el video de fondo */
+#videoFondo {
+    position: fixed;              /* Fijo en pantalla */
+    right: 0;
+    bottom: 0;
+    min-width: 100%;              /* Ancho mínimo 100% ventana */
+    min-height: 100%;             /* Alto mínimo 100% ventana */
+    z-index: -1;                 /* Por detrás del contenido */
+    object-fit: cover;            /* Ajusta el video para cubrir toda el área sin distorsionar */
+}
+
+/* Contenedor para el contenido que se muestra sobre el video */
+.contenido {
+    position: relative;           /* Para que esté sobre el video */
+    z-index: 1;                   /* Por encima del video */
+    color: white;                 /* Texto blanco para contraste */
+}
